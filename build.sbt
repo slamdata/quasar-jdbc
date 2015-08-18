@@ -4,7 +4,7 @@ name := "slamengine-jdbc"
 
 version := "0.1-SNAPSHOT"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.7"
 
 initialize := {
   assert(
@@ -20,7 +20,5 @@ libraryDependencies ++= Seq(
 )
 
 licenses += ("GNU Affero GPL V3", url("http://www.gnu.org/licenses/agpl-3.0.html"))
-
-//com.github.retronym.SbtOneJar.oneJarSettings
 
 assemblySettings

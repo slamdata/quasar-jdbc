@@ -8,7 +8,7 @@ class DriverSpecs extends Specification {
     "connect to local server" in {
       val driver = new SlamDataDriver()
       
-      val cxn = driver.connect("http://localhost:8080/", null)
+      val cxn = driver.connect("slamengine://104.236.166.167:8080/demo/", null)
             
       cxn.close()
       
@@ -18,7 +18,7 @@ class DriverSpecs extends Specification {
     "run simple query" in {
       val driver = new SlamDataDriver()
       
-      val cxn = driver.connect("http://localhost:8080/", null)
+      val cxn = driver.connect("slamengine://104.236.166.167:8080/demo/", null)
       try {
 
         val stmt = cxn.createStatement
@@ -27,10 +27,6 @@ class DriverSpecs extends Specification {
       
         val hasNext = rs.next
       
-        // val count = rs.getInt("0")
-        //
-        // count must_== 29533
-        
         val rez = rs.getString("0")
         rez must_== "29353"
       }
@@ -38,7 +34,6 @@ class DriverSpecs extends Specification {
         cxn.close()
       }
     }
-
   }
   
   step {
