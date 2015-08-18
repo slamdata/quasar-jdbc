@@ -27,8 +27,11 @@ sbt assembly
 The SlamData Engine API server must be running and accessible via the network. See
 [slamdata/slamengine](/slamdata/slamengine).
 
-You open a connection using the host name and port of the SlamEngine server,
-with a URL like `http://localhost:8080/`.
+You open a connection using a URL made up of the scheme `slamengine`, the 
+host name and port of the SlamData server, and the path within the SlamData 
+filesystem where your source files are found.
+
+For example `slamengine://localhost:8080/test/`.
 
 
 ### From Java
@@ -42,7 +45,7 @@ import java.sql.*;
 
 Driver driver = new slamdata.jdbc.SlamDataDriver();
       
-Connection cxn = driver.connect("http://localhost:8080/", null);
+Connection cxn = driver.connect("slamengine://localhost:8080/test/", null);
 try {
   Statement stmt = cxn.createStatement();
 
@@ -66,7 +69,7 @@ Note: error handling and resource cleanup elided above.
 
 Configure your tool to use `slamengine-jdbc_2.11-0.1-SNAPSHOT.jar`.
 
-Open a connection with a URL like `http://localhost:8080/`.
+Open a connection with a URL like `http://localhost:8080/test/`.
 
 Run queries...
 
@@ -75,4 +78,4 @@ Run queries...
 
 Released under ??? LICENSE. See [LICENSE](/slamdata/slamengine-jdbc/blob/master/LICENSE).
 
-Copyright 2014 SlamData Inc.
+Copyright 2014-2015 SlamData Inc.
