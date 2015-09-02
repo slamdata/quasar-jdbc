@@ -1,3 +1,4 @@
-//addSbtPlugin("org.scala-sbt.plugins" % "sbt-onejar" % "0.8")
+// sbt-header
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.5.0")
 
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.11.2")
