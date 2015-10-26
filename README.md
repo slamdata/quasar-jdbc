@@ -1,4 +1,4 @@
-# SlamData JDBC Driver
+# Quasar JDBC Driver
 
 Thin JDBC driver for the SlamData Engine, supporting query execution by
 connecting to the SlamData Engine.
@@ -11,7 +11,7 @@ connecting to the SlamData Engine.
 ### Checkout
 
 ```bash
-git clone git@github.com:slamdata/slamengine.git
+git clone git@github.com:quasar-analytics/quasar-jdbc.git
 ```
 
 ### Build
@@ -21,18 +21,16 @@ Run the tests and assemble the driver and its dependencies into a single jar:
 sbt assembly
 ```
 
-
 ## Usage
 
-The SlamData Engine API server must be running and accessible via the network. See
-[slamdata/slamengine](/slamdata/slamengine).
+The Quasar API server must be running and accessible via the network. See
+[quasar-analytics/quasar](/quasar-analytics/quasar).
 
 You open a connection using a URL made up of the scheme `slamengine`, the 
-host name and port of the SlamData server, and the path within the SlamData 
+host name and port of the Quasar server, and the path within the SlamData 
 filesystem where your source files are found.
 
 For example `slamengine://localhost:8080/test/`.
-
 
 ### From Java
 
