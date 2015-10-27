@@ -1,9 +1,7 @@
 import de.heikoseeberger.sbtheader.HeaderPlugin
 import de.heikoseeberger.sbtheader.license.Apache2_0
 
-organization := "com.slamdata.slamengine"
-
-name := "slamengine-jdbc"
+name := "quasar-jdbc"
 
 version := "0.1-SNAPSHOT"
 

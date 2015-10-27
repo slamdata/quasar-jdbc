@@ -14,35 +14,41 @@
  * limitations under the License.
  */
 
-package slamdata.jdbc
+package quasar.jdbc
 
 import org.specs2.mutable._
 
 class DriverSpecs extends Specification {
-  "SlamDataDriver" should {
+  "QuasarDriver" should {
 
-    "connect to local server" in {
-      val driver = new SlamDataDriver()
-      
-      val cxn = driver.connect("slamengine://104.236.166.167:8080/demo/", null)
-            
+    "connect to demo server" in {
+      val driver = new QuasarDriver()
+
+      val cxn = driver.connect("quasar://104.236.166.167:8080/demo/", null)
+
+      val metaData = cxn.getMetaData()
+      metaData.getDatabaseMajorVersion must_== 2
+      // NB: minor version changes relatively often, so don't bother
+      metaData.getDatabaseProductName must_== "Quasar"
+      metaData.getDatabaseProductVersion must startWith("2.")
+
       cxn.close()
-      
+
       success
     }
 
     "run simple query" in {
-      val driver = new SlamDataDriver()
-      
-      val cxn = driver.connect("slamengine://104.236.166.167:8080/demo/", null)
+      val driver = new QuasarDriver()
+
+      val cxn = driver.connect("quasar://104.236.166.167:8080/demo/", null)
       try {
 
         val stmt = cxn.createStatement
-      
+
         val rs = stmt.executeQuery("select count(*) from zips")
-      
+
         val hasNext = rs.next
-      
+
         val rez = rs.getString("0")
         rez must_== "29353"
       }
@@ -51,9 +57,9 @@ class DriverSpecs extends Specification {
       }
     }
   }
-  
+
   step {
     // cleanup threads for SBT purposes:
-    dispatch.Http.shutdown  
+    dispatch.Http.shutdown
   }
 }
