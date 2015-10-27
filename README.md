@@ -1,7 +1,6 @@
 # Quasar JDBC Driver
 
-Thin JDBC driver for the SlamData Engine, supporting query execution by
-connecting to the SlamData Engine.
+Thin JDBC driver for Quasar, supporting query execution by connecting to the Quasar web API.
 
 
 ## Building from Source
@@ -26,24 +25,24 @@ sbt assembly
 The Quasar API server must be running and accessible via the network. See
 [quasar-analytics/quasar](/quasar-analytics/quasar).
 
-You open a connection using a URL made up of the scheme `slamengine`, the 
-host name and port of the Quasar server, and the path within the SlamData 
+You open a connection using a URL made up of the scheme `quasar`, the
+host name and port of the Quasar server, and the path within the Quasar
 filesystem where your source files are found.
 
-For example `slamengine://localhost:8080/test/`.
+For example `quasar://localhost:8080/test/`.
 
 ### From Java
 
-Add `slamengine-jdbc_2.11-0.1-SNAPSHOT.jar` to your classpath.
+Add `quasar-jdbc_2.11-0.1-SNAPSHOT.jar` to your classpath.
 
 ```java
 import java.sql.*;
 
 ...
 
-Driver driver = new slamdata.jdbc.SlamDataDriver();
-      
-Connection cxn = driver.connect("slamengine://localhost:8080/test/", null);
+Driver driver = new quasar.jdbc.QuasarDriver();
+
+Connection cxn = driver.connect("quasar://localhost:8080/test/", null);
 try {
   Statement stmt = cxn.createStatement();
 
@@ -65,9 +64,9 @@ Note: error handling and resource cleanup elided above.
 
 ### With any JDBC-compatible tool
 
-Configure your tool to use `slamengine-jdbc_2.11-0.1-SNAPSHOT.jar`.
+Configure your tool to use `quasar-jdbc_2.11-0.1-SNAPSHOT.jar`.
 
-Open a connection with a URL like `http://localhost:8080/test/`.
+Open a connection with a URL like `quasar://localhost:8080/test/`.
 
 Run queries...
 
